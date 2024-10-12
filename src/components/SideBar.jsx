@@ -1,24 +1,44 @@
 import {React, useState} from 'react'
+import { FaAngleRight } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
 import { MdOutlineMenu } from 'react-icons/md';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { links } from '../assets/constants/links';
+import {Logo} from './../assets/constants/logos'
 
-const NavLinks = ({ hundelClick }) => (
-  <div className="mt-7">
-    {links.map((link, i) => (
-      <NavLink
-        key={i}
-        className="flex flex-row justify-start items-center
-          my-8 text-base font-medium text-gray-200 hover:text-second"
-        to={link.to}
-        onClick={hundelClick && (() => hundelClick())}
-      >
-        <span>{link.icon}</span><p className='text-[18px]'>{link.name}</p>
-      </NavLink>
-    ))}
-  </div>
-); 
+const NavLinks = ({ hundelClick }) => {
+
+  const [open, setOpen] = useState(false)
+
+  const location = useLocation()
+
+  const Click = () => {
+    hundelClick()
+    setOpen(false)
+  }
+
+  return (
+    <div className="mt-7 px-6 lg:px-0 lg:w-[86%]">
+      
+      {
+        links.map((link, i) => (
+
+            <NavLink
+              key={i}
+              className={`flex flex-row justify-start items-center
+                ${location.pathname.split('/')[2] === 'evenements' && link.name == 'Activités' ? 'text-second' : 'text-gray-200'}
+                my-8 text-base font-medium hover:text-second`}
+              to={link.to}
+              onClick={hundelClick && (() => Click())}
+            >
+              <span>{link.icon}</span><p className='text-[18px]'>{link.name}</p>
+            </NavLink>
+
+        ))
+      }
+    </div>
+  )
+}; 
 
 const SideBar = () => {
 
@@ -30,14 +50,13 @@ const SideBar = () => {
 
   return (
     <div>
-      <div className="lg:flex hidden flex-col h-screen items-center py-7 px-4 w-[250px] bg-gradient-to-tl from-[#324D67] to-[#060606] ">
+      <div className="lg:flex hidden flex-col h-full items-center py-7 px-4 w-[250px] bg-gradient-to-tl from-green-900 to-[#131412] ">
         <Link
-          className="flex items-center ml-[-12px]"
+          className="flex flex-col max-h-[100px] max-w-[150px] items-center ml-[-12px]"
           to="/dashboard"
         >
-          <p className="font-semibold text-center tracking-md text-2xl ml-[-4px] text-gray-100">
-            MSD SHOP
-          </p>
+          <img src={Logo} className='w-full mt-5 h-full' />
+
         </Link>
 
         <NavLinks hundelClick={() => hundelClickIN()} />
@@ -53,16 +72,16 @@ const SideBar = () => {
       </div>
 
       <div
-        className={`absolute top-0 h-screen w-3/4 sm:w-2/4 bg-gradient-to-tl from-[#324D67] to-[#060606]
-        z-50 backdrop-blur-lg p-6 lg:hidden smooth-transition ${
+        className={`absolute top-0 h-full w-full sm:w-2/4 bg-gradient-to-tl from-green-900 to-[#131412]
+        z-50 backdrop-blur-lg lg:hidden smooth-transition ${
           mobileMenuOpen ? "left-0" : "-left-full"
         }`}
       >
-        <div className='flex justify-between'>
+        <div className='flex justify-between p-6 border-b '>
 
           <Link to="/dashboard">
-            <p className="font-bold text-center tracking-md text-2xl ml-2 mt-[-4px] text-gray-100">
-              MSD SHOP
+            <p className="font-bold text-center tracking-md text-xl md:text-2xl ml-2 mt-[-4px] text-gray-100">
+              Gite Dar RIHANA
             </p>
           </Link>
           {
@@ -74,10 +93,10 @@ const SideBar = () => {
             )
           }
         </div>
-          
-        <hr className='border-gray-200 mt-5 w-[130%] -ml-[30px]'/>
 
         <NavLinks hundelClick={() => hundelClickIN()} />
+        
+
       </div>
 
     </div>

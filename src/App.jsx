@@ -8,9 +8,12 @@ import { Toaster } from 'react-hot-toast';
 import { Loading } from './components';
 
 const checkTokenExpiration = () => {
+
   const token = localStorage.getItem('token');
   const expirationTime = localStorage.getItem('expirationTime');
+
   if (token && expirationTime) {
+
       const now = new Date();
       const expired = now.getTime() > parseInt(expirationTime, 10);
 
@@ -44,8 +47,14 @@ function App() {
           
           try {
             
-            const res = await Axios.get('/user-role');
-            localStorage.setItem('user', JSON.stringify({...user, number : res.data.id, role : res.data.role}));
+            const res = await Axios.get('/user');
+            localStorage.setItem('user', JSON.stringify({
+              ...user, 
+              number : res.data.id, 
+              adress : res.data.adress, 
+              verified_at : res.data.verified_at,
+              patient : res.data.patient
+            }));
 
           } catch (rej) {
             
@@ -64,8 +73,10 @@ function App() {
       })()
 
       // Check token expiration every hour
-      const interval = setInterval(checkTokenExpiration, 1 * 24 * 60 * 60 * 1000);
+      const interval = setInterval(checkTokenExpiration, 15000);
+      // const interval = setInterval(checkTokenExpiration, 1 * 24 * 60 * 60 * 1000);
       return () => clearInterval(interval);
+
     }, []);
 
   return (

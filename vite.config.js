@@ -1,24 +1,31 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 import compression from 'vite-plugin-compression';
-// https://vitejs.dev/config/
+
 export default defineConfig({
+  server: {
+    proxy: {
+      '/api' : "http://gite-rihanna.great-site.net/"
+    }
+  },
   plugins: [
     react(),
     compression({
-      algorithm: 'gzip', // يمكنك اختيار 'gzip' أو 'brotliCompress'
-      ext: '.gz', // لاحقة الملفات المضغوطة، يمكنك استخدام '.br' لـ Brotli
-      threshold: 10240, // الحد الأدنى لحجم الملف قبل الضغط (بالبايت)
-      // يمكنك تحديد إعدادات إضافية هنا
+      algorithm: 'gzip',
+      ext: '.gz',
+      threshold: 10240,
     }),
   ],
   build: {
-    minify: 'terser', // Use terser for minification
+    minify: 'terser',
     terserOptions: {
-        // Optional Terser options for further customization
-        compress: {
-            drop_console: true, // Drop console statements
-        },
+      compress: {
+        drop_console: true,
+      },
     },
+    // تكوين Babel هنا إذا كنت تستخدم
+    babel: {
+      presets: ['@babel/preset-env']
+    }
   },
-})
+});

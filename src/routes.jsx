@@ -2,21 +2,26 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 
 import './App.css'
 import {
-	ProductsManagement,
-	CategoriesManagement,
-	OrdersManagement,
-	TrashedProducts,
-	Search,
+	Evenement,
 	GuestLayout,
 	Auth,
 	Dashboard,
-	LandingPage,
 	Login,
 	Register,
-	HomeDashboard
+	HomeDashboard,
+	SendVerifyCode,
+	EmailVerification,
+	ForgetPassword,
+	ResetPassword,
+	Drivers,
+	Guides,
+	EventsRaports,
+	GuidesRaports,
+	DriversRaports,
+	Facture
 } from "./pages";
 
-import { SuccessCom, CancelCom, ProductDetails } from "./components";
+import FunctionsContextPaginationGD from "./context/StatePaginateGuideDriver";
 
 const router = createBrowserRouter([
 	{
@@ -31,31 +36,21 @@ const router = createBrowserRouter([
 				path: '/auth/register',
 				element: <Register />,
 			},
-		],
-	},
-	{
-		path: '/',
-		element: <Auth />,
-		children: [
+			// {
+			// 	path: '/auth/send-verification-code',
+			// 	element: <SendVerifyCode />,
+			// },
+			// {
+			// 	path: '/auth/email-verification/:token',
+			// 	element: <EmailVerification />,
+			// },
 			{
-				path: '/success/:CHECKOUT_SESSION_ID',
-				element: <SuccessCom />,
+				path: '/auth/forget-password',
+				element: <ForgetPassword />,
 			},
 			{
-				path: '/cancel/:CHECKOUT_SESSION_ID',
-				element: <CancelCom />,
-			},
-			{
-				path: '/',
-				element: <LandingPage />,
-			},
-			{
-				path: '/products/:id',
-				element: <ProductDetails />,
-			},
-			{
-				path: '/products/search/:query',
-				element: <Search />,
+				path: '/auth/reset-password/:token',
+				element: <ResetPassword />,
 			},
 		],
 	},
@@ -68,26 +63,26 @@ const router = createBrowserRouter([
 				element : <HomeDashboard />	
 			},
 			{
-				path : '/dashboard/products',
-				element : <ProductsManagement />
+				path : '/dashboard/evenements/:date',
+				element : <Evenement />
 			},
 			{
-				path : '/dashboard/categories',
-				element : <CategoriesManagement />
+				path : '/dashboard/Chauffeurs',
+				element : <FunctionsContextPaginationGD><Drivers /></FunctionsContextPaginationGD>
 			},
 			{
-				path : '/dashboard/orders',
-				element : <OrdersManagement />
-			},
-			{
-				path : '/dashboard/trashed-products',
-				element : <TrashedProducts />
-			},
+				path : '/dashboard/guides',
+				element : <FunctionsContextPaginationGD><Guides /></FunctionsContextPaginationGD>
+			}
         ]
     },
     {
+        path : '/pdf',
+        element : <Facture />
+    },
+	{
         path : '*',
-        element : <Navigate to='/'/>
+        element : <Navigate to='/dashboard'/>
     }
 ]);
 

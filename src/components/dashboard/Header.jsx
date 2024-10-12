@@ -1,5 +1,5 @@
 import React from 'react'
-import {Notification, Profile} from '../';
+import {Profile} from '../';
 
 function Header() {
 
@@ -7,8 +7,6 @@ function Header() {
     <header className='flex p-3 items-center gap-5 justify-end bg-gray-100'>
 
         <Profile/>
-
-        <Notification/>
 
     </header>
   )
