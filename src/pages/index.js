@@ -10,6 +10,7 @@ const SendVerifyCode = React.lazy(() => import("./auth/SendVerifyCode"));
 const EmailVerification = React.lazy(() => import("./auth/EmailVerification"));
 const ForgetPassword = React.lazy(() => import("./auth/ForgetPassword"));
 const ResetPassword = React.lazy(() => import("./auth/ResetPassword"));
+<<<<<<< HEAD
 const Drivers = React.lazy(() => import("./Drivers"));
 const Guides = React.lazy(() => import("./Guides"));
 const EventsRaports = React.lazy(() => import("./EventsRaports"));
@@ -28,6 +29,20 @@ export {
   ResetPassword,
   SendVerifyCode,
   EmailVerification,
+=======
+const DiscountsManagements = React.lazy(() => import("./DiscountsManagements"));
+const ReviewsPage = React.lazy(() => import("./ReviewsPage"));
+const StockEmpty = React.lazy(() => import("./StockEmpty"));
+
+export {
+  StockEmpty,
+  ForgetPassword,
+  DiscountsManagements,
+  ResetPassword,
+  SendVerifyCode,
+  EmailVerification,
+  LandingPage,
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
   Dashboard,
   Login,
   Register,
@@ -35,4 +50,5 @@ export {
   Auth,
   GuestLayout,
   HomeDashboard,
+  ReviewsPage
 };

@@ -6,6 +6,7 @@ import routes from './routes.jsx'
 import { useStateContext } from './context/StateContext';
 import { Toaster } from 'react-hot-toast';
 import { Loading } from './components';
+import ErrorBoundary from './assets/constants/errors/ErrorBoundary';
 
 const checkTokenExpiration = () => {
 
@@ -16,6 +17,8 @@ const checkTokenExpiration = () => {
 
       const now = new Date();
       const expired = now.getTime() > parseInt(expirationTime, 10);
+
+      console.log(now + '----' + parseInt(expirationTime, 10));
 
       if (expired) {
 
@@ -37,7 +40,9 @@ const checkTokenExpiration = () => {
 };
 
 function App() {
+
     const {user} = useStateContext()
+
     // check if user is logged in or not from server
     useEffect(() => {
       
@@ -47,6 +52,7 @@ function App() {
           
           try {
             
+<<<<<<< HEAD
             const res = await Axios.get('/user');
             localStorage.setItem('user', JSON.stringify({
               ...user, 
@@ -55,6 +61,10 @@ function App() {
               verified_at : res.data.verified_at,
               patient : res.data.patient
             }));
+=======
+            const res = await Axios.get('/user-role');
+            localStorage.setItem('user', JSON.stringify({...user, number : res.data.id, role : res.data.role, verified_at : res.data.verified_at}));
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
 
           } catch (rej) {
             
@@ -80,10 +90,12 @@ function App() {
     }, []);
 
   return (
-    <Suspense fallback={<Loading/>}>
-      <Toaster/>
-      <RouterProvider router={routes}/>
-    </Suspense>
+    <ErrorBoundary>
+      <Suspense fallback={<Loading/>}>
+        <Toaster/>
+        <RouterProvider router={routes}/>
+      </Suspense>
+    </ErrorBoundary>
   );
 
 }

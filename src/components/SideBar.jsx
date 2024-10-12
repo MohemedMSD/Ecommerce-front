@@ -50,7 +50,11 @@ const SideBar = () => {
 
   return (
     <div>
+<<<<<<< HEAD
       <div className="lg:flex hidden flex-col h-full items-center py-7 px-4 w-[250px] bg-gradient-to-tl from-green-900 to-[#131412] ">
+=======
+      <div className="lg:flex hidden flex-col h-screen items-center py-7 px-4 w-[250px] bg-gradient-to-tl from-primary_text to-[#060606] ">
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
         <Link
           className="flex flex-col max-h-[100px] max-w-[150px] items-center ml-[-12px]"
           to="/dashboard"
@@ -72,6 +76,7 @@ const SideBar = () => {
       </div>
 
       <div
+<<<<<<< HEAD
         className={`absolute top-0 h-full w-full sm:w-2/4 bg-gradient-to-tl from-green-900 to-[#131412]
         z-50 backdrop-blur-lg lg:hidden smooth-transition ${
           mobileMenuOpen ? "left-0" : "-left-full"
@@ -82,6 +87,18 @@ const SideBar = () => {
           <Link to="/dashboard">
             <p className="font-bold text-center tracking-md text-xl md:text-2xl ml-2 mt-[-4px] text-gray-100">
               Gite Dar RIHANA
+=======
+        className={`absolute top-0 h-screen w-[90%] sm:w-2/4 bg-gradient-to-tl from-primary_text to-[#060606]
+        z-50 backdrop-blur-lg p-6 lg:hidden smooth-transition ${
+          mobileMenuOpen ? "left-0" : "-left-full"
+        }`}
+      >
+        <div className='flex relative justify-between'>
+
+          <Link className='mb-5' to="/dashboard">
+            <p className="font-bold text-center tracking-md text-2xl ml-2 mt-[-4px] text-gray-100">
+              MSD SHOP
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
             </p>
           </Link>
           {
@@ -93,6 +110,11 @@ const SideBar = () => {
             )
           }
         </div>
+<<<<<<< HEAD
+=======
+          
+        <hr className='border-gray-200 absolute w-full right-0'/>
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
 
         <NavLinks hundelClick={() => hundelClickIN()} />
         

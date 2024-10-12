@@ -200,7 +200,11 @@ const ResetPassword = () => {
               <button
                 onClick={(e) => ResetPassword(e)}
                 type="submit"
+<<<<<<< HEAD
                 className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-second hover:bg-green-400 rounded py-2 w-full transition duration-150 ease-in"
+=======
+                className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-second hover:bg-red-400 rounded py-2 w-full transition duration-150 ease-in"
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
               >
                 <span className="mr-2 uppercase">Reset Password</span>
                 <span>

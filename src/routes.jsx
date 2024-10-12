@@ -13,12 +13,17 @@ import {
 	EmailVerification,
 	ForgetPassword,
 	ResetPassword,
+<<<<<<< HEAD
 	Drivers,
 	Guides,
 	EventsRaports,
 	GuidesRaports,
 	DriversRaports,
 	Facture
+=======
+	DiscountsManagements,
+	ReviewsPage
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
 } from "./pages";
 
 import FunctionsContextPaginationGD from "./context/StatePaginateGuideDriver";
@@ -36,6 +41,7 @@ const router = createBrowserRouter([
 				path: '/auth/register',
 				element: <Register />,
 			},
+<<<<<<< HEAD
 			// {
 			// 	path: '/auth/send-verification-code',
 			// 	element: <SendVerifyCode />,
@@ -44,6 +50,15 @@ const router = createBrowserRouter([
 			// 	path: '/auth/email-verification/:token',
 			// 	element: <EmailVerification />,
 			// },
+=======
+			{
+				path: '/auth/send-verification-code',
+				element: <SendVerifyCode />,
+			},
+			{
+				path: '/auth/email-verification/:token',
+				element: <EmailVerification />,
+			},
 			{
 				path: '/auth/forget-password',
 				element: <ForgetPassword />,
@@ -52,6 +67,42 @@ const router = createBrowserRouter([
 				path: '/auth/reset-password/:token',
 				element: <ResetPassword />,
 			},
+		],
+	},
+	{
+		path: '/',
+		element: <Auth />,
+		children: [
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
+			{
+				path: '/auth/forget-password',
+				element: <ForgetPassword />,
+			},
+			{
+<<<<<<< HEAD
+				path: '/auth/reset-password/:token',
+				element: <ResetPassword />,
+=======
+				path: '/cancel/:CHECKOUT_SESSION_ID',
+				element: <CancelCom />,
+			},
+			{
+				path: '/',
+				element: <LandingPage />,
+			},
+			{
+				path: '/products/:id',
+				element: <ProductDetails />,
+			},
+			{
+				path: '/products-search/:query',
+				element: <Search />,
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
+			},
+			{
+				path: '/products/review/:id',
+				element: <ReviewsPage />,
+			}
 		],
 	},
     {
@@ -71,9 +122,23 @@ const router = createBrowserRouter([
 				element : <FunctionsContextPaginationGD><Drivers /></FunctionsContextPaginationGD>
 			},
 			{
+<<<<<<< HEAD
 				path : '/dashboard/guides',
 				element : <FunctionsContextPaginationGD><Guides /></FunctionsContextPaginationGD>
 			}
+=======
+				path : '/dashboard/orders',
+				element : <OrdersManagement />
+			},
+			{
+				path : '/dashboard/discounts',
+				element : <DiscountsManagements />
+			},
+			{
+				path : '/dashboard/trashed-products',
+				element : <TrashedProducts />
+			},
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
         ]
     },
     {

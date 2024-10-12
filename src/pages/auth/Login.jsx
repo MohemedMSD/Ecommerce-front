@@ -33,8 +33,23 @@ const Login = () => {
       })
       .then((res) => {
 
+<<<<<<< HEAD
         setUser(res.data.user);
         window.location.href = '/dashboard'
+=======
+        setUser(res.data.user, res.data.baseUrl);
+
+        const redirectPath = sessionStorage.getItem('redirectPath')
+
+        if (redirectPath) {
+          window.location.href = redirectPath
+          sessionStorage.removeItem('redirectPath')
+        }else{
+          window.location.href = '/'
+        }
+
+
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
   
       }).catch((rej) => {
 
@@ -174,7 +189,11 @@ const Login = () => {
                   to="/auth/forget-password"
                   className="inline-flex text-xs sm:text-sm text-gray-500 hover:text-gray-700"
                 >
+<<<<<<< HEAD
                   Mot de passe oublié
+=======
+                  Forgot Your Password?
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
                 </NavLink>
               </div>
             </div>

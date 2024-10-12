@@ -1,13 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 /* Active Navigation Link */
 .active {
   @apply text-second;
 }
 
-.active svg {
+/* .active svg {
   @apply text-second;
+} */
+
+.gradient {
+  position: relative;
+  overflow: hidden;                   
+}
+
+.gradient:before {
+  content: "";
+  position: absolute;
+  width: 900px;
+  height: 300px;
+  top: -50%;
+  left: -125%;
+  background-image: linear-gradient(#5cb85c, transparent);
+  transform: rotate(90deg);
 }
 
 .bar:nth-child(2) {
@@ -157,10 +174,44 @@
   width: 450px;
 }
 
+<<<<<<< HEAD
 .inLoading {
   animation: loading 1s linear infinite
 }
 
+=======
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 80px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-color: #ccc #0000;
+  animation: l16 1s infinite linear;
+}
+.loader::before,
+.loader::after {    
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+}
+.loader::before {
+  border-color: #f03355 #0000;
+  animation: inherit; 
+  animation-duration: .5s;
+  animation-direction: reverse;
+}
+.loader::after {
+  margin: 8px;
+}
+
+@keyframes l16 { 
+  100%{transform: rotate(1turn)}
+}
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
 
 @media screen and (max-width:800px) {
   .hero-banner-container{

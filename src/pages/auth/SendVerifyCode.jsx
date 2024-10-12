@@ -111,7 +111,11 @@ const SendVerifyCode = () => {
               )
             }
             {
+<<<<<<< HEAD
               error && !success && <h2 className='text-center text-second font-semibold text-[20px]'>Sometimes wrong, please try later!</h2>
+=======
+              error && !success && <h2 className='text-center text-red-500 font-semibold text-[20px]'>Sometimes wrong, please try later!</h2>
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
             }
 
             {
@@ -131,7 +135,11 @@ const SendVerifyCode = () => {
             <button
                 type="submit"
                 onClick={()=>logout()}
+<<<<<<< HEAD
                 className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-second hover:bg-green-400 rounded py-2 w-full transition duration-150 ease-in"
+=======
+                className="flex items-center justify-center focus:outline-none text-white text-sm sm:text-base bg-second hover:bg-red-400 rounded py-2 w-full transition duration-150 ease-in"
+>>>>>>> ee0fb04978010731a65b7449f0c0472299446185
               >
                 <span className="mr-2 uppercase">Logout</span>
                 <span>
